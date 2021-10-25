@@ -1,3 +1,4 @@
 export interface IUser {
-    getAllUsers(): object;
+    getAllUsers(): Promise<object>;
+    getUserById(): object;
 }
