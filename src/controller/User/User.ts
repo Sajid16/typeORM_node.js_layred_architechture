@@ -1,11 +1,12 @@
 import {NextFunction, Request, Response} from "express";
+import { IUser } from "../../service/abstraction/IUser";
 import { UserService } from "../../service/implementation/userService";
 // import {ReturnResponse} from "../../response/response";
 // import {errorLogHandler} from "../../errorLogHandler/errorLogHandler";
 
 export class Users {
 
-    private readonly _userService: any;
+    private readonly _userService: IUser;
     constructor()
     {
         this._userService = new UserService();
