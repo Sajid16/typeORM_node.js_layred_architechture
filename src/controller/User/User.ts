@@ -1,4 +1,5 @@
 import {NextFunction, Request, Response} from "express";
+import { CommonCode } from "../../helpers/commonCode";
 import { IUser } from "../../service/abstraction/IUser";
 import { UserService } from "../../service/implementation/userService";
 // import {ReturnResponse} from "../../response/response";
@@ -18,15 +19,14 @@ export class Users {
             let data = await this._userService.getAllUsers();
             return response.send({
                 success: true,
-                message: "it is working",
+                message: CommonCode.successMessage,
                 data: data
             });        
             
         } catch (error) {
             return response.send({
                 success: true,
-                message: "it is not working",
-                data: []
+                message: CommonCode.errorMessage
             }); 
         }
     }
