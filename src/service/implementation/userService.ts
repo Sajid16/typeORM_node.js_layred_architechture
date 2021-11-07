@@ -11,9 +11,10 @@ export class UserService implements IUser {
     }
     async createNewUser(inputData: userModel): Promise<object> {
         try {
+            const LASTNAME = inputData.middleName +" "+ inputData.lastName;
             const insertUser = {
                 firstName: inputData.firstName,
-                lastName: inputData.lastName,
+                lastName: LASTNAME,
                 age: inputData.age
             };
             let insertUserResponse = await this.userRepository.save(insertUser);
