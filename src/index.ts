@@ -1,11 +1,10 @@
 import "reflect-metadata";
-import {createConnection} from "typeorm";
+import { createConnection } from "typeorm";
 import * as express from "express";
-import {Request, Response} from "express";
+import { Request, Response } from "express";
 import * as bodyParser from "body-parser";
 import * as cors from 'cors';
-import {User} from "./entity/User";
-import {Routes} from "./routes/routes";
+import { Routes } from "./routes/routes";
 
 createConnection().then(async connection => {
 
@@ -24,14 +23,13 @@ createConnection().then(async connection => {
 
     // register express routes from defined application routes
     Routes.forEach(routeArray => {
-
         routeArray.forEach(route => {
             (app as any)[route.method](route.route, (req: Request, res: Response, next: Function) => {
-                 const result = (new (route.controller as any))[route.action](req, res, next);
+                const result = (new (route.controller as any))[route.action](req, res, next);
             });
-        
+
         });
-        
+
     });
 
     // start express server
